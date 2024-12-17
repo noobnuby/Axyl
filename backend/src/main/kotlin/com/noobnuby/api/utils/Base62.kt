@@ -1,6 +1,8 @@
 package com.noobnuby.api.utils
 
-val words = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+import kotlin.math.pow
+
+val words = ('0'..'9') + ('A'..'Z') + ('a'..'z')
 
 fun Long.encodeToBase62(): String {
 	var result = ""
@@ -12,8 +14,7 @@ fun Long.encodeToBase62(): String {
 	return result
 }
 
-//fun String.decodeToBase62() : Long {
-//	var result = 0
-//	var index = this
-//	val
-//}
+fun String.decodeBase62() =
+	this.reversed().foldIndexed(0L) { index, acc, c ->
+		acc + (words.binarySearch(c) * 62.toDouble().pow(index)).toLong()
+	}

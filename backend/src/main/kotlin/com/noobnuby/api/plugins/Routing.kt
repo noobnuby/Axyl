@@ -2,6 +2,7 @@ package com.noobnuby.api.plugins
 
 import com.noobnuby.api.data.PostData
 import com.noobnuby.api.data.ResponseKeyData
+import com.noobnuby.api.utils.DataBase
 import com.noobnuby.api.utils.encodeToBase62
 import com.noobnuby.api.utils.isUrl
 import io.ktor.http.*
@@ -15,6 +16,8 @@ import kotlinx.serialization.json.encodeToJsonElement
 import kotlin.random.Random
 
 fun Application.configureRouting() {
+	DataBase.register()
+
     routing {
         get("/") {
             call.respondText(
@@ -26,8 +29,8 @@ fun Application.configureRouting() {
         }
 
 		//TODO : Add DataBase
-		//TODO : Key Logic
-		post("/url") {
+		//TODO : Key Logic (using pk)
+		post("/shorten") {
 			var id: Long = 0
 			var success = false
 			try {
@@ -45,6 +48,9 @@ fun Application.configureRouting() {
 			}
 		}
 
-		//TODO : Get URL
+		//TODO : Get URL (using query parameter)
+		get("/url") {
+
+		}
     }
 }
