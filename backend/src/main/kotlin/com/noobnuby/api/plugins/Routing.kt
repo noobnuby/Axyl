@@ -24,15 +24,6 @@ private const val ID_OFFSET = 10000000000
 fun Application.configureRouting() {
 	DataBase.register()
     routing {
-        get("/") {
-            call.respondText(
-				contentType = ContentType.parse("text/html"),
-				text = """
-					<h1> axyl api service
-				""".trimIndent()
-			)
-        }
-
 		post("/shorten") {
 			try {
 				val context = call.receive<PostData>()
