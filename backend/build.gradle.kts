@@ -28,6 +28,7 @@ dependencies {
 	implementation(libs.exposed.core)
 	implementation(libs.exposed.jdbc)
 	implementation(libs.sqlite.jdbc)
+	implementation(libs.exposed.dao)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }
