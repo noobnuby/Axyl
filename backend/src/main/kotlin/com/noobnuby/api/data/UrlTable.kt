@@ -1,10 +1,7 @@
 package com.noobnuby.api.data
 
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.id.LongIdTable
 
-object UrlTable: Table() {
-	val id = integer("id").autoIncrement()
-	val url = varchar("url", 100)
-
-	override val primaryKey = PrimaryKey(id)
+object UrlTable: LongIdTable() {
+	val url = varchar("url", 2000).uniqueIndex()
 }
