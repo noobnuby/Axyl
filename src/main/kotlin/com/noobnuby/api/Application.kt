@@ -1,5 +1,6 @@
 package com.noobnuby.api
 
+import com.noobnuby.api.plugins.configurePebble
 import com.noobnuby.api.plugins.configureRouting
 import com.noobnuby.api.plugins.configureSerialization
 import io.ktor.server.application.*
@@ -14,4 +15,5 @@ fun main() {
 fun Application.module() {
     configureRouting()
 	configureSerialization()
+	configurePebble()
 }

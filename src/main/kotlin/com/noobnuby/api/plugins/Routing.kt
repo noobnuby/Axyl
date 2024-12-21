@@ -10,6 +10,7 @@ import com.noobnuby.api.utils.isUrl
 import io.ktor.http.*
 import io.ktor.serialization.*
 import io.ktor.server.application.*
+import io.ktor.server.pebble.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -23,7 +24,14 @@ private const val ID_OFFSET = 10000000000
 
 fun Application.configureRouting() {
 	DataBase.register()
+
     routing {
+		get("/") {
+			call.respond(PebbleContent(
+				"index.html", mapOf()
+			))
+		}
+
 		post("/shorten") {
 			try {
 				val context = call.receive<PostData>()
